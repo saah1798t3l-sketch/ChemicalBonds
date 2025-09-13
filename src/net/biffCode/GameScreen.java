@@ -14,15 +14,14 @@ public class GameScreen extends JPanel implements Runnable{
     final int screenWidth = columns*tileSize;
     final int screenHeight = rows* tileSize;
     Thread gameThread;
-    KeyHandler keyHandler = new KeyHandler();
     int FPS = 60;
-    Player player = new Player(this, keyHandler);
+    Player player = new Player(this);
 
     public GameScreen(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
-        this.addKeyListener(keyHandler);
+        this.addKeyListener(player.keyListner);
         this.setFocusable(true);
     }
     public void startGameThread() {

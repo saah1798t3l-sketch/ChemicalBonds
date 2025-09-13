@@ -1,42 +1,48 @@
 package net.biffCode.entity;
 
 import net.biffCode.GameScreen;
-import net.biffCode.KeyHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 
 public class Player extends Entity{
     GameScreen screen;
-    KeyHandler keyHandler;
+    public PlayerMovementListner keyListner;
 
-    public Player(GameScreen GS, KeyHandler KH){
+    public Player(GameScreen GS){
         screen = GS;
-        keyHandler = KH;
         this.setDefault();
         this.loadSpriteSheet();
         direction= "forward";
+        this.setKeyListner();
     }
     public void setDefault(){
         x = 100;
         y =100;
         speed = 4;
     }
+
+    public void setKeyListner() {
+        this.keyListner = new PlayerMovementListner();
+    }
+
     public void update(){
-        if (keyHandler.up){
+        if (this.keyListner.up){
             y-=speed;
             direction = "back";
         }
-        else if (keyHandler.down){
+        else if (keyListner.down){
             y+=speed;
             direction = "forward";
         }
-        else if (keyHandler.left){
+        else if (keyListner.west){
             x-=speed;
             direction = "left";
         }
-        else if (keyHandler.right){
+        else if (keyListner.east){
             x+=speed;
             direction = "right";
         }
@@ -59,4 +65,29 @@ public class Player extends Entity{
         }
     }
 
+    static class PlayerMovementListner implements KeyListener {
+        public boolean up, down, east, west;
+        @Override
+        public void keyTyped(KeyEvent e) {}
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            switch (e.getKeyCode()){
+                case KeyEvent.VK_W, KeyEvent.VK_UP: up = true; break;
+                case KeyEvent.VK_A, KeyEvent.VK_LEFT: west = true; break;
+                case KeyEvent.VK_S, KeyEvent.VK_DOWN: down = true; break;
+                case KeyEvent.VK_D, KeyEvent.VK_RIGHT: east = true; break;
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            switch (e.getKeyCode()){
+                case KeyEvent.VK_W, KeyEvent.VK_UP: up = false; break;
+                case KeyEvent.VK_A, KeyEvent.VK_LEFT: west = false; break;
+                case KeyEvent.VK_S, KeyEvent.VK_DOWN: down = false; break;
+                case KeyEvent.VK_D, KeyEvent.VK_RIGHT: east = false; break;
+            }
+        }
+    }
 }

@@ -8,5 +8,4 @@ public class Entity {
     int speed;
     public BufferedImage spriteSheet;
     public String direction;
-    int health;
 }
