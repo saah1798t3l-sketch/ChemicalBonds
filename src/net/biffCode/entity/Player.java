@@ -10,7 +10,6 @@ import java.io.IOException;
 public class Player extends Entity{
     GameScreen screen;
     KeyHandler keyHandler;
-    String name;
 
     public Player(GameScreen GS, KeyHandler KH){
         screen = GS;
