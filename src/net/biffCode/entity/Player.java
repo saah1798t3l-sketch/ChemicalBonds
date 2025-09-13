@@ -48,8 +48,6 @@ public class Player extends Entity{
         }
     }
     public void draw(Graphics2D g2d){
-        //g2d.setColor(Color.white);
-        //g2d.fillRect(x,y,screen.tileSize,screen.tileSize);
         switch (direction){
             case "forward": g2d.drawImage(spriteSheet.getSubimage(0,0,32,32),x,y,64,64, null);break;
             case "back": g2d.drawImage(spriteSheet.getSubimage(0,64,32,32),x,y,64,64, null);break;
