@@ -9,4 +9,6 @@ public class Entity {
     public BufferedImage spriteSheet;
     public String direction;
     int health;
+    public boolean spriteVersion = true;
+    public int spriteVersionCount = 0;
 }

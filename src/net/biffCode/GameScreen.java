@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameScreen extends JPanel implements Runnable{
-    final int OGtileSize = 32; //16*16 tile sizes
+    public final int OGtileSize = 32; //16*16 tile sizes
     final int scale = 2; //scales tilesize
-    public final int tileSize = OGtileSize*scale;
+    final int tileSize = OGtileSize*scale;
     final int columns = 16;
     final int rows = 12;
     final int screenWidth = columns*tileSize;
