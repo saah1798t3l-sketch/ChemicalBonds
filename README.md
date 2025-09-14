@@ -8,7 +8,8 @@ This game is designed to reinforce the concept of Ionic versus Covalent bonds th
 ## Covalent and Ionic???
 These are the two major types of bonds. Covalent involves sharing of electrons while ionic
     involves "donation" of electrons.
-
+## Notes
+* Chartcer backgrounds are white because MS paint suckes and so does Pixlr and Piskels.
 ## Credits:
 * The artwork is all by me (in case you couldn't tell by the terrible quality...)
 * The code is mostly based off of RyiSnow's 2d game tutorial
