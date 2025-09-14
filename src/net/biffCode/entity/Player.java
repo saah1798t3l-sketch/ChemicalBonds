@@ -49,10 +49,10 @@ public class Player extends Entity{
     }
     public void draw(Graphics2D g2d){
         switch (direction){
-            case "forward": g2d.drawImage(spriteSheet.getSubimage(0,0,32,32),x,y,64,64, null);break;
-            case "back": g2d.drawImage(spriteSheet.getSubimage(0,64,32,32),x,y,64,64, null);break;
-            case "left": g2d.drawImage(spriteSheet.getSubimage(0,128,32,32),x,y,64,64, null);break;
-            case "right": g2d.drawImage(spriteSheet.getSubimage(0,96,32,32),x,y,64,64, null);break;
+            case "forward": g2d.drawImage(spriteSheet.getSubimage(0,0,screen.tileSize,screen.tileSize),x,y,64,64, null);break;
+            case "back": g2d.drawImage(spriteSheet.getSubimage(0,64,screen.tileSize,screen.tileSize),x,y,64,64, null);break;
+            case "left": g2d.drawImage(spriteSheet.getSubimage(0,128,screen.tileSize,screen.tileSize),x,y,64,64, null);break;
+            case "right": g2d.drawImage(spriteSheet.getSubimage(0,96,screen.tileSize,screen.tileSize),x,y,64,64, null);break;
         }
        }
     public void loadSpriteSheet(){
