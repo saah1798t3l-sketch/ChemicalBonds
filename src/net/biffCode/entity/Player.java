@@ -67,7 +67,7 @@ public class Player extends Entity{
        }
     public void loadSpriteSheet(){
         try {
-            spriteSheet = ImageIO.read(getClass().getResource("/resources/player/SpriteSheet3A.png"));
+            spriteSheet = ImageIO.read(getClass().getResource("/resources/player/SpriteSheet3B.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
