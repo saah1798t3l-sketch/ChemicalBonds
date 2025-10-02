@@ -10,6 +10,7 @@ These are the two major types of bonds. Covalent involves sharing of electrons w
     involves "donation" of electrons.
 ## Notes
 * The tiles suck- I'm not good at pixel art
+* Currently, the project is on hold
 ## Credits:
 * The artwork is all by me (in case you couldn't tell by the terrible quality...)
 * The code is mostly based off of RyiSnow's 2d game tutorial
