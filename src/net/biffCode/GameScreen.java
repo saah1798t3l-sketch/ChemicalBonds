@@ -16,8 +16,12 @@ public class GameScreen extends JPanel implements Runnable{
     final int screenHeight = rows* tileSize;
     Thread gameThread;
     int FPS = 60;
-    Player player = new Player(this);
+    public Player player = new Player(this);
     TileManager tiler = new TileManager(this);
+
+    //map stuffs
+    public final int totalColumns = 17;
+    public final int totalRows = 12;
 
     public GameScreen(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));

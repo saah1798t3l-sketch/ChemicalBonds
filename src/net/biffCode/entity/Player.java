@@ -11,6 +11,8 @@ import java.io.IOException;
 public class Player extends Entity{
     GameScreen screen;
     public PlayerMovementListner keyListner;
+    public int screenX = 480;
+    public int screenY = 352;
 
     public Player(GameScreen GS){
         screen = GS;
@@ -20,8 +22,8 @@ public class Player extends Entity{
         this.setKeyListner();
     }
     public void setDefault(){
-        x = 100;
-        y =100;
+        worldX = screen.tileSize*6;
+        worldY = screen.tileSize*7;
         speed = 4;
     }
 
@@ -31,32 +33,32 @@ public class Player extends Entity{
 
     public void update(){
         if (this.keyListner.up ){
-            y-=speed;
+            worldY -=1;
             direction = "back";
         }
         else if (this.keyListner.down){
-            y+=speed;
+            worldY +=1;
             direction = "forward";
         }
         else if (this.keyListner.west){
-            x-=speed;
+            worldX -=1;
             direction = "left";
         }
         else if (this.keyListner.east){
-            x+=speed;
+            worldX +=1;
             direction = "right";
         }
     }
     public void draw(Graphics2D g2d){
         switch (direction){
-            case "forward": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,0,screen.OGtileSize,screen.OGtileSize),x,y,64,64, null); break;
-            case "back": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,32,screen.OGtileSize,screen.OGtileSize),x,y,64,64, null);break;
-            case "left": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,64,screen.OGtileSize,screen.OGtileSize),x,y,64,64, null);break;
-            case "right": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,96,screen.OGtileSize,screen.OGtileSize),x,y,64,64, null);break;
-            case "face fore": g2d.drawImage(spriteSheet.getSubimage(0,0,screen.OGtileSize, screen.OGtileSize), x, y, 64, 64, null);break;
-            case "face back": g2d.drawImage(spriteSheet.getSubimage(0,32,screen.OGtileSize, screen.OGtileSize), x, y, 64, 64, null);break;
-            case "face west": g2d.drawImage(spriteSheet.getSubimage(0,64,screen.OGtileSize, screen.OGtileSize), x, y, 64, 64, null);break;
-            case "face east": g2d.drawImage(spriteSheet.getSubimage(0,96,screen.OGtileSize, screen.OGtileSize), x, y, 64, 64, null);break;
+            case "forward": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,0,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null); break;
+            case "back": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,32,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
+            case "left": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,64,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
+            case "right": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,96,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
+            case "face fore": g2d.drawImage(spriteSheet.getSubimage(0,0,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
+            case "face back": g2d.drawImage(spriteSheet.getSubimage(0,32,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
+            case "face west": g2d.drawImage(spriteSheet.getSubimage(0,64,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
+            case "face east": g2d.drawImage(spriteSheet.getSubimage(0,96,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
         }
         if (spriteVersionCount == 10){
             spriteVersionCount = 0;
