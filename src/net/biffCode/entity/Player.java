@@ -7,10 +7,12 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.lang.Math;
+
 
 public class Player extends Entity{
     GameScreen screen;
-    public PlayerMovementListner keyListner;
+    private PlayerMovementListner keyListner;
     public int screenX = 480;
     public int screenY = 352;
 
@@ -22,8 +24,8 @@ public class Player extends Entity{
         this.setKeyListner();
     }
     public void setDefault(){
-        worldX = screen.tileSize*6;
-        worldY = screen.tileSize*7;
+        worldX = screen.tileSize*0;
+        worldY = screen.tileSize*0;
         speed = 4;
     }
 
@@ -33,36 +35,37 @@ public class Player extends Entity{
 
     public void update(){
         if (this.keyListner.up ){
-            worldY -=1;
+            worldY -=4;
             direction = "back";
         }
         else if (this.keyListner.down){
-            worldY +=1;
+            worldY +=4;
             direction = "forward";
         }
         else if (this.keyListner.west){
-            worldX -=1;
+            worldX -=4;
             direction = "left";
         }
         else if (this.keyListner.east){
-            worldX +=1;
+            worldX +=4;
             direction = "right";
         }
     }
     public void draw(Graphics2D g2d){
+        int x = Math.abs(spriteIcon * 32);
         switch (direction){
-            case "forward": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,0,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null); break;
-            case "back": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,32,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
-            case "left": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,64,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
-            case "right": g2d.drawImage(spriteSheet.getSubimage((spriteVersion)? 32:64,96,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
-            case "face fore": g2d.drawImage(spriteSheet.getSubimage(0,0,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
-            case "face back": g2d.drawImage(spriteSheet.getSubimage(0,32,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
-            case "face west": g2d.drawImage(spriteSheet.getSubimage(0,64,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
-            case "face east": g2d.drawImage(spriteSheet.getSubimage(0,96,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
+            case "forward": g2d.drawImage(spriteSheet.getSubimage(x,0,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null); break;
+            case "back": g2d.drawImage(spriteSheet.getSubimage(x,32,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
+            case "left": g2d.drawImage(spriteSheet.getSubimage(x,64,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
+            case "right": g2d.drawImage(spriteSheet.getSubimage(x,96,screen.OGtileSize,screen.OGtileSize), 480, 352,64,64, null);break;
+            case "face fore": g2d.drawImage(spriteSheet.getSubimage(32,0,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
+            case "face back": g2d.drawImage(spriteSheet.getSubimage(32,32,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
+            case "face west": g2d.drawImage(spriteSheet.getSubimage(32,64,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
+            case "face east": g2d.drawImage(spriteSheet.getSubimage(32,96,screen.OGtileSize, screen.OGtileSize), 480, 352, 64, 64, null);break;
         }
         if (spriteVersionCount == 10){
             spriteVersionCount = 0;
-            spriteVersion = !spriteVersion;
+            spriteIcon = (spriteIcon != 2)? (byte) (spriteIcon + 1) :-1;
         } else{
             spriteVersionCount++;
         }
@@ -77,7 +80,6 @@ public class Player extends Entity{
 
     static class PlayerMovementListner implements KeyListener {
         public boolean up, down, east, west;
-        public int direction;
         Player player;
         public PlayerMovementListner(Player player){
             super();

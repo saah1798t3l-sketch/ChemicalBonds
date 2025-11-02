@@ -8,6 +8,6 @@ public class Entity {
     int speed;
     public BufferedImage spriteSheet;
     public String direction;
-    public boolean spriteVersion = true;
+    public byte spriteIcon = 0;
     public int spriteVersionCount = 0;
 }
