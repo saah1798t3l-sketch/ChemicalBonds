@@ -12,7 +12,7 @@ import java.lang.Math;
 
 public class Player extends Entity{
     GameScreen screen;
-    private PlayerMovementListner keyListner;
+    public PlayerMovementListner keyListner;
     public int screenX = 480;
     public int screenY = 352;
 
