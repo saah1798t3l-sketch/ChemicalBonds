@@ -17,7 +17,6 @@ public class TileManager {
         mapTiles = new int[screen.totalColumns][screen.totalRows];
         getTileImage();
         loadMap("/resources/maps/map1.txt");
-
     }
     public void getTileImage(){
         try {
